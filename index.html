@@ -1,0 +1,368 @@
+
+<!DOCTYPE HTML>
+<!--[if IE 8 ]><html lang="en" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html lang="en" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Page Scroll to id - jQuery plugin demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- stylesheet for demo and examples -->
+	<link rel="stylesheet" href="style.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/mdb.min.css" rel="stylesheet">
+<link href="styles/main.css" rel="stylesheet">
+<link rel="stylesheet" media="screen" href="css/style.css">
+
+<style>
+body{ 
+-ms-touch-action: none;
+ touch-action: none;
+ } /* optional for touch/pointer events */
+
+/* aside indicators */
+#sections-bullets{
+	position: fixed;
+	right: 2em;
+	height: auto;
+	margin-left: 200px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.section-bullet{
+	display: block;
+	position: relative;
+	width: 9px;
+	height: 9px;
+	border-radius: 100%;
+	background: #fff;
+	margin: 12px auto;
+	opacity: .6;
+}
+
+.section-bullet:hover, .section-bullet.mPS2id-highlight{
+	opacity: 1;
+	background: #e6842c;
+}
+#navigation-menu {
+	display: none;
+}
+#section-4-1 {
+	background-color: black;
+	min-height: 900px;
+}
+.badge, .btn, .card:not([class*=card-outline-]), .chip, .jumbotron, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .navbar, .pagination .active .page-link, .z-depth-1 {
+	box-shadow: 0 0px 0px 0 rgba(0,0,0,0),0 0px 0px 0 rgba(0,0,0,0);
+}
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 18px;
+	vertical-align: baseline;
+	background: transparent;
+}
+canvas{
+	margin: 7%;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 18%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+.rowF {
+	flex-direction: row;
+}
+.row-reverseF {
+	flex-direction: row-reverse;
+}
+.columnF {
+	flex-direction: column;
+}
+.column-reverseF {
+	flex-direction: column-reverse;
+}
+
+/* Flex Container */
+.containerF {
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	border: 1px solid #ccc;
+}
+/* Flex Item */
+.itemF {
+	/* O flex: 1; é necessário para que cada item se expanda ocupando o tamanho máximo do container. */
+	flex: 1;
+	margin: 5px;
+	background: tomato;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+.titulo
+{
+	width: 100px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="navbar">
+		<div class="container"><a class="navbar-brand" href="#"><img src="logo.png"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+			<div class="collapse navbar-collapse" id="navbarContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link active" href="#about">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#projects">Sobre Nós</a></li>
+					<li class="nav-item"><a class="nav-link" href="#pricing">Institucional</a></li>
+					<li class="nav-item"><a class="nav-link" href="#team">Processo Seletivo</a></li>
+					<li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+				</div>
+			</div>
+		</nav>
+
+		<nav id="navigation-menu">
+			<ul>
+				<li><a href="#section-1" rel="m_PageScroll2id">Section 1</a></li>
+				<li><a href="#section-2" rel="m_PageScroll2id">Section 2</a></li>
+				<li><a href="#section-3" rel="m_PageScroll2id">Section 3</a></li>
+				<li><a href="#section-4" rel="m_PageScroll2id">Section 4</a></li>
+				<li><a href="#section-5" rel="m_PageScroll2id">Section 5</a></li>
+				<li><a href="#section-6" rel="m_PageScroll2id">Section 6</a></li>
+				<li><a href="#section-7" rel="m_PageScroll2id">Section 7</a></li>
+			</ul>
+		</nav>
+
+		<!-- count particles -->
+
+
+
+		<div id="content">
+			<!-- count particles -->
+
+
+
+			<section id="section-1">
+
+
+				<div id="particles-js" style="background-image: url(1.jpg);width:100%;height: 100%; float: left">
+				<section class="view hm-gradient" id="intro">
+        <div class="full-bg-img d-flex align-items-center">
+          <div class="container">
+            <div class="row no-gutters">
+              <div class="col-md-10 col-lg-6 text-center text-md-center margins">
+                <div class="white-text">
+                	<div class="wow fadeInLeft" data-wow-delay="0.3s">
+                  <div class="wow fadeInCenter" data-wow-delay="0.1s">
+                    <h1 class="h1-responsive font-bold mt-sm-5">Poli Junior Engenharia.</h1>
+                    <div class="h6">
+                     Desde de 2006 impactando a sociedade Pernambucana, a Poli Júnior Engenharia, mais do que faz projetos de engenharia, cria e desenvolve soluções inovadoras para o mercado, transformando ideias em realidade.
+                    </div>
+                  </div> </div><br>
+                  <div class="wow fadeInLeft" data-wow-delay="0.6s"><a class="btn btn-white dark-grey-text font-bold ml-0" href="https://www.youtube.com/watch?v=60ItHLz5WEA" target="_blank"><i class="fa fa-play mr-1"></i> Converse Conosco</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+				</div>
+
+				
+
+<script src="particles.js"></script>
+<script src="js/app.js"></script>
+				<div class="content">
+					
+
+				</div>
+			</section>
+			<section id="section-2">
+				<div class="content" style="padding-top: 30%;">
+					
+					<h1 id="titulo" style="font-size: 27px;text-align: justify-all;padding-rigth:30%;">Somos a primeira empresa junior de engenharia de Pernambuco</h1><br>
+					<p style="font-size: 17px; text-align:justify; ">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p style="font-size:17px; text-align: justify; ">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+
+				<section class="containerF rowF" style="height: 300px;">
+	<div class="itemF">1</div>
+	<div class="itemF">2</div>
+	<div class="itemF">3</div>
+</section>
+			</section>
+			<section id="section-3">
+
+
+
+				<div class="content">
+					<h2>Section 3</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</section>
+			<section id="section-4">
+				<div class="content" id="section-4-1">
+					<h2>Section 4</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</section>
+			<section id="section-5">
+				<div class="content">
+					<h2>Section 5</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</section>
+			<section id="section-6">
+				<div class="content">
+					<h2>Section 6</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+			</section>
+			<section id="section-7">
+				<div class="content">
+					<h2>Section 7</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<hr /><a href="#top" rel="m_PageScroll2id">&uarr; Back to top</a>
+				</div>
+			</section>
+
+		</div>
+
+		<footer>
+			<p>Page Scroll to id - jQuery plugin by <a href="http://manos.malihu.gr">malihu</a>. Plugin homepage: <a href="http://manos.malihu.gr/page-scroll-to-id">http://manos.malihu.gr/page-scroll-to-id</a>.</p>
+		</footer>
+
+		<!-- Google CDN jQuery with fallback to local -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/jquery-3.1.0.min.js"><\/script>')</script>
+
+		<!-- Page Scroll to id plugin -->
+		<script src="jquery.malihu.PageScroll2id.min.js"></script>
+
+		<script>
+			(function($){
+				$(window).on("load",function(){
+
+					/* Page Scroll to id fn call */
+					$("a[rel='m_PageScroll2id']").mPageScroll2id({
+						scrollSpeed: 1200
+						,scrollEasing:"easeOutQuint"
+						,liveSelector:"a[rel='m_PageScroll2id']"
+					});
+
+				});
+			})(jQuery);
+		</script>
+
+		<!-- mousewheel, keyboard, touch functionality -->
+		<script>
+			(function($){
+				$(window).on("load",function(){
+
+					if(!$(document).data("mPS2id")){
+						console.log("Error: 'Page scroll to id' plugin not present or activated. Please run the code after plugin is loaded.");
+						return;
+					}
+
+					$(document).data("mPS2idExtend",{
+						selector:"#navigation-menu ._mPS2id-h",
+						currentSelector:function(){
+							return this.index($(".mPS2id-highlight-first").length ? $(".mPS2id-highlight-first") : $(".mPS2id-highlight"));
+						},
+						input:{y:null,x:null},
+						i:null,
+						time:null
+					}).on("scrollSection",function(e,dlt,i){
+						var d=$(this).data("mPS2idExtend"),
+						sel=$(d.selector);
+						if(!$("html,body").is(":animated")){
+							if(!i) i=d.currentSelector.call(sel);
+							if(!(i===0 && dlt>0) && !(i===sel.length-1 && dlt<0)) sel.eq(i-dlt).trigger("click.mPS2id");
+						}
+				}).on("mousewheel DOMMouseScroll",function(e){ //mousewheel
+					if($($(this).data("mPS2idExtend").selector).length) e.preventDefault();
+					$(this).trigger("scrollSection",((e.originalEvent.detail<0 || e.originalEvent.wheelDelta>0) ? 1 : -1));
+				}).on("keydown",function(e){ //keyboard
+					var code=e.keyCode ? e.keyCode : e.which,
+					keys=$(this).data("mPS2id").layout==="horizontal" ? [37,39] : [38,40];
+					if(code===keys[0] || code===keys[1]){
+						if($($(this).data("mPS2idExtend").selector).length) e.preventDefault();
+						$(this).trigger("scrollSection",(code===keys[0] ? 1 : -1));
+					}
+				}).on("pointerdown touchstart",function(e){ //touch (optional)
+					var o=e.originalEvent,
+					d=$(this).data("mPS2idExtend");
+					if(o.pointerType==="touch" || e.type==="touchstart"){
+						var y=o.screenY || o.changedTouches[0].screenY;
+						d.input.y=y;
+						if($(this).data("mPS2id").layout==="horizontal"){
+							var x=o.screenX || o.changedTouches[0].screenX;
+							d.input.x=x;
+						}
+						d.time=o.timeStamp;
+						d.i=d.currentSelector.call($(d.selector));
+					}
+				}).on("touchmove",function(e){
+					if($("html,body").is(":animated")) e.preventDefault();
+				}).on("pointerup touchend",function(e){
+					var o=e.originalEvent;
+					if(o.pointerType==="touch" || e.type==="touchend"){
+						var y=o.screenY || o.changedTouches[0].screenY,
+						d=$(this).data("mPS2idExtend"),
+						diff=d.input.y-y,
+						time=o.timeStamp-d.time,
+						i=d.currentSelector.call($(d.selector));
+						if($(this).data("mPS2id").layout==="horizontal"){
+							var x=o.screenX || o.changedTouches[0].screenX,
+							diff=d.input.x-x;
+						}
+						if(Math.abs(diff)<2) return;
+						var _switch=function(){
+							return time<200 && i===d.i;
+						};
+						$(this).trigger("scrollSection",[(diff>0 && _switch() ? -1 : diff<0 && _switch() ? 1 : 0),(_switch() ? d.i : i)]);
+					}
+				});
+				
+				//aside indicators
+				$("body").append("<div id='sections-bullets' />").find($(document).data("mPS2idExtend").selector).each(function(){
+					$("#sections-bullets").append("<a href='"+$(this).attr("href")+"' class='section-bullet' rel='m_PageScroll2id'></a>");
+				});
+				
+			});
+			})(jQuery);
+
+
+		</script>
+
+
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/popper.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/mdb.min.js"></script>
+		<script>new WOW().init();</script>
+	</body>
+	</html>
